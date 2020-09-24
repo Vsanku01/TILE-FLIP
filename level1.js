@@ -5,9 +5,9 @@ let colNum = parseInt(htmlStyles.getPropertyValue('--colNum'));
 console.log(rowNum, colNum);
 
 // Variables
-let width = colNum;
+let width = 8;
 let umbrellaCount = 20;
-let height = rowNum;
+let height = 5;
 let squares = [];
 
 // Components
@@ -46,14 +46,14 @@ link1.setAttribute('id', 'instruct');
 navOptions.append(link1);
 
 const link2 = document.createElement('a');
-link2.setAttribute('href', '#');
+link2.setAttribute('href', 'dom.html');
 link2.setAttribute('id', 'timer');
 link2.innerText = 'Timer';
 
 navOptions.append(link2);
 
 const link3 = document.createElement('a');
-link3.setAttribute('href', '#');
+link3.setAttribute('href', 'dom.html');
 link3.setAttribute('id', 'score');
 link3.innerText = 'Score';
 
@@ -101,13 +101,13 @@ instructionsPara.innerHTML = `<div class="flex-content">
     points
   </p>
 
-  <p>5. There will be a game timer which is set for 2 min.The timer gets reset automatically after the time elapses.</p>
+  <p>5. There will be a game timer which is set for 2 min</p>
 
   <p>
     6. More cards you flip correctly , you'll receive high score !!!!
     :)
   </p>
-  <button type="button" onclick="modal.style.display = 'none';startTimer();" class = "start-btn">Start</button>
+  <button type="button" onclick="modal.style.display = 'none';">Start</button>
 </div>
 <div class="image">
   <img src="./assets/Boy.PNG" alt="pic" />
@@ -145,13 +145,14 @@ let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 
-
+startTimer();
 
 function startTimer() {
   timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
-    document.getElementById('timer').innerText = `Timer:  ${formatTime(timeLeft)}`;
+    document.getElementById('timer').innerHTML = formatTime(timeLeft);
+
     if (timeLeft === 0) {
       onTimesUp();
     }
@@ -362,7 +363,7 @@ function onTimesUp() {
     document.getElementById('description').innerText =
       'Congrats!! You have cleared the level';
     setTimeout(() => {
-      location.replace('level1.html');
+      location.replace('index.html');
     }, 3000);
   } else {
     document.getElementsByClassName('popup')[0].classList.add('active');
