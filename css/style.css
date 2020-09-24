@@ -1,0 +1,52 @@
+.grid {
+  width: 385px;
+  height: 220px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: gray;
+}
+
+.grid div {
+  height: 50px;
+  width: 50px;
+  float: left;
+  border-bottom: 5px solid white;
+  border-right: 5px solid white;
+}
+.danger {
+  background-color: orange;
+}
+
+/* card */
+body {
+  font-family: sans-serif;
+}
+
+.card {
+  width: 50px;
+  height: 50px;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card__face {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card__face--front {
+  background: red;
+}
+
+.card__face--back {
+  transform: rotateY(180deg);
+}
