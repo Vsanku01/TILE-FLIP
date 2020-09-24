@@ -1,4 +1,4 @@
-* {
+body{
   background-color: black;
 }
 
@@ -7,11 +7,15 @@
   height: 220px;
   display: flex;
   flex-wrap: wrap;
-  background-color: gray;
   margin: auto auto;
   margin-top: 15%;
   background-color: grey;
   padding: 50px;
+  /* shadow */
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px wheat;
+  border-radius: 3px;
 }
 
 .grid div {
@@ -22,7 +26,17 @@
   border-right: 5px solid white;
 }
 .danger {
-  background-color: orange;
+  background: url('./assets/bomb.png') !important;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  object-fit: scale-down;
+}
+
+.umbrella .card__face--back{
+  background: url('./assets/umbrella.png') !important;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  object-fit: contain;
 }
 
 /* card */
@@ -129,5 +143,3 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
-
-
