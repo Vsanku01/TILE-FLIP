@@ -1,4 +1,5 @@
 // CSS
+// alert('Please read the instructions and start the Game :)')
 let htmlStyles = window.getComputedStyle(document.querySelector('html'));
 let rowNum = parseInt(htmlStyles.getPropertyValue('--rowNum'));
 let colNum = parseInt(htmlStyles.getPropertyValue('--colNum'));
@@ -9,6 +10,24 @@ let width = colNum;
 let umbrellaCount = 20;
 let height = rowNum;
 let squares = [];
+
+// Bg
+const bg = document.createElement('div');
+bg.classList.add('bg');
+
+document.body.append(bg);
+
+const bg2 = document.createElement('div');
+bg2.classList.add('bg');
+bg2.classList.add('bg2');
+
+document.body.append(bg2);
+
+const bg3 = document.createElement('div');
+bg3.classList.add('bg');
+bg3.classList.add('bg3');
+
+document.body.append(bg3);
 
 // Components
 const header = document.createElement('header');
@@ -102,12 +121,13 @@ instructionsPara.innerHTML = `<div class="flex-content">
   </p>
 
   <p>5. There will be a game timer which is set for 2 min.The timer gets reset automatically after the time elapses.</p>
-
+  <p>6. Start and Reset button will be available in the instructions Page.</p>
   <p>
-    6. More cards you flip correctly , you'll receive high score !!!!
+    7. More cards you flip correctly , you'll receive high score !!!!
     :)
   </p>
   <button type="button" onclick="modal.style.display = 'none';startTimer();" class = "start-btn">Start</button>
+  <button type="button" onclick="modal.style.display = 'none';startTimer();" class = "start-btn">Reset</button>
 </div>
 <div class="image">
   <img src="./assets/Boy.PNG" alt="pic" />
@@ -145,13 +165,13 @@ let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 
-
-
 function startTimer() {
   timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
-    document.getElementById('timer').innerText = `Timer:  ${formatTime(timeLeft)}`;
+    document.getElementById('timer').innerText = `Timer:  ${formatTime(
+      timeLeft
+    )}`;
     if (timeLeft === 0) {
       onTimesUp();
     }
@@ -230,7 +250,7 @@ document.querySelectorAll('.card').forEach((item) => {
         unFlipCount += 1;
         setTimeout(() => {
           item.classList.toggle('is-flipped');
-        }, 2000);
+        }, 3000);
         count = 0;
         console.log('first-danger-count-fin', count);
         alert('You clicked bomb on first tap itself');
@@ -377,3 +397,25 @@ function onTimesUp() {
     }, 3000);
   }
 }
+
+// // Animations
+
+const area = document.createElement('div');
+area.classList.add('area');
+document.body.append(area);
+
+const circles = document.createElement('ul');
+circles.classList.add('circles');
+
+area.append(circles);
+
+circles.innerHTML = `<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>`;

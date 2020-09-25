@@ -1,14 +1,33 @@
 // CSS
+// alert('Please read the instructions and start the Game :)')
 let htmlStyles = window.getComputedStyle(document.querySelector('html'));
 let rowNum = parseInt(htmlStyles.getPropertyValue('--rowNum'));
 let colNum = parseInt(htmlStyles.getPropertyValue('--colNum'));
 console.log(rowNum, colNum);
 
 // Variables
-let width = 8;
-let umbrellaCount = 20;
-let height = 5;
+let width = colNum;
+let umbrellaCount = 28;
+let height = rowNum;
 let squares = [];
+
+// Bg
+const bg = document.createElement('div');
+bg.classList.add('bg');
+
+document.body.append(bg);
+
+const bg2 = document.createElement('div');
+bg2.classList.add('bg');
+bg2.classList.add('bg2');
+
+document.body.append(bg2);
+
+const bg3 = document.createElement('div');
+bg3.classList.add('bg');
+bg3.classList.add('bg3');
+
+document.body.append(bg3);
 
 // Components
 const header = document.createElement('header');
@@ -46,14 +65,14 @@ link1.setAttribute('id', 'instruct');
 navOptions.append(link1);
 
 const link2 = document.createElement('a');
-link2.setAttribute('href', 'dom.html');
+link2.setAttribute('href', '#');
 link2.setAttribute('id', 'timer');
 link2.innerText = 'Timer';
 
 navOptions.append(link2);
 
 const link3 = document.createElement('a');
-link3.setAttribute('href', 'dom.html');
+link3.setAttribute('href', '#');
 link3.setAttribute('id', 'score');
 link3.innerText = 'Score';
 
@@ -101,13 +120,17 @@ instructionsPara.innerHTML = `<div class="flex-content">
     points
   </p>
 
-  <p>5. There will be a game timer which is set for 2 min</p>
+
+  <p>5. There will be a game timer which is set for 2 min.The timer gets reset automatically after the time elapses.</p>
+
+  <p>6. Start and Reset button will be available in the instructions Page.</p>
 
   <p>
-    6. More cards you flip correctly , you'll receive high score !!!!
+    7. More cards you flip correctly , you'll receive high score !!!!
     :)
   </p>
-  <button type="button" onclick="modal.style.display = 'none';">Start</button>
+  <button type="button" onclick="modal.style.display = 'none';startTimer();" class = "start-btn">Start</button>
+  <button type="button" onclick="modal.style.display = 'none';startTimer();" class = "start-btn">Reset</button>
 </div>
 <div class="image">
   <img src="./assets/Boy.PNG" alt="pic" />
@@ -145,14 +168,13 @@ let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 
-startTimer();
-
 function startTimer() {
   timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
-    document.getElementById('timer').innerHTML = formatTime(timeLeft);
-
+    document.getElementById('timer').innerText = `Timer:  ${formatTime(
+      timeLeft
+    )}`;
     if (timeLeft === 0) {
       onTimesUp();
     }
@@ -231,7 +253,7 @@ document.querySelectorAll('.card').forEach((item) => {
         unFlipCount += 1;
         setTimeout(() => {
           item.classList.toggle('is-flipped');
-        }, 2000);
+        }, 3000);
         count = 0;
         console.log('first-danger-count-fin', count);
         alert('You clicked bomb on first tap itself');
@@ -357,13 +379,13 @@ function onTimesUp() {
   // document.documentElement.style.setProperty('--height', '275px');
   // document.documentElement.style.setProperty('--rowNum', 5);
   // document.documentElement.style.setProperty('--colNum', 8);
-  if (flipCount > 15) {
+  if (flipCount > 18) {
     document.getElementsByClassName('popup')[0].classList.add('active');
     document.getElementById('title').innerText = `Success: ${flipCount}`;
     document.getElementById('description').innerText =
       'Congrats!! You have cleared the level';
     setTimeout(() => {
-      location.replace('index.html');
+      location.replace('level1.html');
     }, 3000);
   } else {
     document.getElementsByClassName('popup')[0].classList.add('active');
@@ -378,3 +400,25 @@ function onTimesUp() {
     }, 3000);
   }
 }
+
+// Animations
+
+const area = document.createElement('div');
+area.classList.add('area');
+document.body.append(area);
+
+const circles = document.createElement('ul');
+circles.classList.add('circles');
+
+area.append(circles);
+
+circles.innerHTML = `<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>`;
