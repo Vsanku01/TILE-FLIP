@@ -1,5 +1,5 @@
 // CSS
-// alert('Please read the instructions and start the Game :)')
+alert('Please read the instructions and start the Game :)');
 let htmlStyles = window.getComputedStyle(document.querySelector('html'));
 let rowNum = parseInt(htmlStyles.getPropertyValue('--rowNum'));
 let colNum = parseInt(htmlStyles.getPropertyValue('--colNum'));
