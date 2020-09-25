@@ -402,23 +402,3 @@ function onTimesUp() {
 }
 
 // Animations
-
-const area = document.createElement('div');
-area.classList.add('area');
-document.body.append(area);
-
-const circles = document.createElement('ul');
-circles.classList.add('circles');
-
-area.append(circles);
-
-circles.innerHTML = `<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>`;
